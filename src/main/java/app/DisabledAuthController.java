@@ -1,8 +1,8 @@
 package app;
 
-import jakarta.annotation.Priority;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Alternative;
+import javax.annotation.Priority;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import io.quarkus.security.spi.runtime.AuthorizationController;
 

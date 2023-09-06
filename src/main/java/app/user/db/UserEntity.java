@@ -1,11 +1,11 @@
 package app.user.db;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import app.Entity;
 import app.user.User;
 
-@jakarta.persistence.Entity
+@javax.persistence.Entity
 @Table(name = "user_rhdp")
 class UserEntity extends Entity {
 

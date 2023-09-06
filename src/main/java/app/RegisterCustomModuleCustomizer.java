@@ -1,6 +1,6 @@
 package app;
 
-import jakarta.inject.Singleton;
+import javax.inject.Singleton;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.jackson.ObjectMapperCustomizer;
