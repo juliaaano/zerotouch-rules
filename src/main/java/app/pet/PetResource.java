@@ -43,22 +43,22 @@ import app.UUID;
 @Consumes(TEXT_PLAIN)
 @Produces(TEXT_PLAIN)
 @Tag(name = "pets", description = "operations about pets")
-@SecurityScheme(
-    securitySchemeName = "oauth2",
-    type = OAUTH2,
-    description = "Authentication needed for this operation",
-    flows = @OAuthFlows(
-        authorizationCode = @OAuthFlow(
-            authorizationUrl = "http://localhost:50102/realms/quarkus/protocol/openid-connect/auth",
-            tokenUrl = "http://localhost:50102/realms/quarkus/protocol/openid-connect/token",
-            scopes = {
-                @OAuthScope(name = "api.pets:read", description = "Allows to read pets."),
-                @OAuthScope(name = "api.pets:write", description = "Allows to create and modify pets."),
-                @OAuthScope(name = "api.pets:erase", description = "Allows to remove pets.")
-            }
-        )
-    )
-)
+// @SecurityScheme(
+//     securitySchemeName = "oauth2",
+//     type = OAUTH2,
+//     description = "Authentication needed for this operation",
+//     flows = @OAuthFlows(
+//         authorizationCode = @OAuthFlow(
+//             authorizationUrl = "http://localhost:50102/realms/quarkus/protocol/openid-connect/auth",
+//             tokenUrl = "http://localhost:50102/realms/quarkus/protocol/openid-connect/token",
+//             scopes = {
+//                 @OAuthScope(name = "api.pets:read", description = "Allows to read pets."),
+//                 @OAuthScope(name = "api.pets:write", description = "Allows to create and modify pets."),
+//                 @OAuthScope(name = "api.pets:erase", description = "Allows to remove pets.")
+//             }
+//         )
+//     )
+// )
 @RequestScoped
 public class PetResource {
 

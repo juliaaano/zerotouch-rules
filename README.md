@@ -45,12 +45,12 @@ docker login registry.redhat.io
 ```
 Try the **native** or any other compatible image:
 ```
-./run.sh ghcr.io/juliaaano/quarkus-native:latest
+./run.sh ghcr.io/juliaaano/zerotouch-rules-native:latest
 ```
 
 ### Build and run image locally:
 ```
-./build.sh && ./run.sh localhost/juliaaano/quarkus
+./build.sh && ./run.sh localhost/juliaaano/zerotouch-rules
 ```
 
 ## Build and test a native executable
@@ -75,12 +75,12 @@ Works with Kubernetes too, but then you need to take care of the database and in
 
 ```
 oc new-project juliaaano
-oc new-app --name=postgresql --template=postgresql-ephemeral -e POSTGRESQL_USER=quarkus -e POSTGRESQL_PASSWORD=password -e POSTGRESQL_DATABASE=quarkusdb --labels="app=quarkus-app"
-kubectl create configmap liquibase --from-file=liquibase/ && kubectl label cm liquibase app=quarkus-app
+oc new-app --name=postgresql --template=postgresql-ephemeral -e POSTGRESQL_USER=quarkus -e POSTGRESQL_PASSWORD=password -e POSTGRESQL_DATABASE=quarkusdb --labels="app=zerotouch-rules"
+kubectl create configmap liquibase --from-file=liquibase/ && kubectl label cm liquibase app=zerotouch-rules
 kubectl apply -f manifests/
 kubectl set env deployment quarkus APP_AUTHORIZATION_ENABLED=false
 kubectl scale deployment quarkus --replicas 2
-oc expose service quarkus --labels="app=quarkus-app"
+oc expose service quarkus --labels="app=zerotouch-rules"
 curl -i "http://$(oc get route quarkus -o jsonpath='{.spec.host}')/q/health"
 ```
 
@@ -93,16 +93,16 @@ These instructions are intended to be used in testing and development and not fo
 _**TODO:** Not working, fix the /.s2i script._
 
 ```
-oc new-build --binary=true --docker-image=registry.redhat.io/ubi8/openjdk-11 --name=quarkus --labels="app=quarkus-app"
-oc start-build quarkus --from-dir . --follow
+oc new-build --binary=true --docker-image=registry.redhat.io/ubi8/openjdk-11 --name=zerotouch-rules --labels="app=zerotouch-rules"
+oc start-build zerotouch-rules --from-dir . --follow
 ```
 
 ### Native build
 
 ```
 mvn clean package -Pnative -Dquarkus.native.container-build=true
-oc new-build --binary=true --docker-image=quay.io/quarkus/ubi-quarkus-native-binary-s2i:1.0 --name=quarkus-native --labels="app=quarkus-app"
-oc start-build quarkus-native --from-file ./target/quarkus-app-1.0.1-runner --follow
+oc new-build --binary=true --docker-image=quay.io/quarkus/ubi-quarkus-native-binary-s2i:1.0 --name=zerotouch-rules-native --labels="app=zerotouch-rules"
+oc start-build zerotouch-rules-native --from-file ./target/zerotouch-rules-1.0.1-runner --follow
 ```
 
 ### Deployment
@@ -118,7 +118,7 @@ Review any steps above in [OpenShift](#OpenShift).
 ### Clean up
 
 ```
-kubectl delete all -l app=quarkus-app
+kubectl delete all -l app=zerotouch-rules
 ```
 
 ### Postman API testing

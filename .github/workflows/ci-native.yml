@@ -97,5 +97,5 @@ jobs:
           -Dquarkus.container-image.push=true
           -Dquarkus.container-image.username=${{ github.actor }}
           -Dquarkus.container-image.password=${{ secrets.GITHUB_TOKEN }}
-          -Dquarkus.container-image.image=ghcr.io/${{ github.repository_owner }}/quarkus-native:latest
+          -Dquarkus.container-image.image=ghcr.io/${{ github.repository_owner }}/zerotouch-rules-native:latest
           '-Dquarkus.container-image.labels."org.opencontainers.image.revision"='$GITHUB_SHA

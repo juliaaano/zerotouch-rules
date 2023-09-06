@@ -27,6 +27,24 @@
 
     <addPrimaryKey columnNames="identifier" constraintName="pk_pet" tableName="pet"/>
 
+    <comment>Create user_rhdp table</comment>
+
+    <createTable tableName="user_rhdp">
+      <column name="identifier" type="char(36)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="name" type="varchar(180)"/>
+      <column name="running" type="int"/>
+      <column name="created_at" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="updated_at" type="timestamp">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <addPrimaryKey columnNames="identifier" constraintName="pk_user_rhdp" tableName="user_rhdp"/>
+
   </changeSet>
 
   <changeSet author="quarkus" id="2">
@@ -38,6 +56,14 @@
       <column name="species" type="STRING"/>
       <column name="breed" type="STRING"/>
       <column name="name" type="STRING"/>
+    </loadData>
+
+    <comment>Load user_rhdp data</comment>
+
+    <loadData file="users.csv" relativeToChangelogFile="true" encoding="UTF-8" separator="," tableName="user_rhdp">
+      <column name="identifier" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="running" type="NUMERIC"/>
     </loadData>
 
   </changeSet>

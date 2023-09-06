@@ -118,6 +118,14 @@
                     "clientRole": true,
                     "containerId": "cfcccb59-401c-4f8e-91a6-c8eb5f33a957",
                     "attributes": {}
+                },
+                {
+                    "id": "1867019a-473a-11ee-be56-0242ac120002",
+                    "name": "USERS_READ",
+                    "composite": false,
+                    "clientRole": true,
+                    "containerId": "cfcccb59-401c-4f8e-91a6-c8eb5f33a957",
+                    "attributes": {}
                 }
             ],
             "realm-management": [
@@ -513,7 +521,8 @@
                     "PETS_READ",
                     "PETS_UPDATE",
                     "PETS_CREATE",
-                    "PETS_DELETE"
+                    "PETS_DELETE",
+                    "USERS_READ"
                 ],
                 "account": [
                     "manage-account",
@@ -547,7 +556,8 @@
             ],
             "clientRoles": {
                 "quarkus-api": [
-                    "PETS_READ"
+                    "PETS_READ",
+                    "USERS_READ"
                 ],
                 "account": [
                     "manage-account",
@@ -616,6 +626,12 @@
                 "clientScope": "api.pets:erase",
                 "roles": [
                     "PETS_DELETE"
+                ]
+            },
+            {
+                "clientScope": "api.users:read",
+                "roles": [
+                    "USERS_READ"
                 ]
             }
         ],
@@ -936,7 +952,8 @@
                 "phone",
                 "offline_access",
                 "microprofile-jwt",
-                "api.pets:write"
+                "api.pets:write",
+                "api.users:read"
             ]
         },
         {
@@ -1054,6 +1071,17 @@
                 "include.in.token.scope": "true",
                 "display.on.consent.screen": "true",
                 "consent.screen.text": "read pets"
+            }
+        },
+        {
+            "id": "e21c4502-473c-11ee-be56-0242ac120002",
+            "name": "api.users:read",
+            "description": "Allows to read users.",
+            "protocol": "openid-connect",
+            "attributes": {
+                "include.in.token.scope": "true",
+                "display.on.consent.screen": "true",
+                "consent.screen.text": "read users"
             }
         },
         {

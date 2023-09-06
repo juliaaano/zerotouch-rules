@@ -5,7 +5,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.juliaaano</groupId>
-  <artifactId>quarkus-app</artifactId>
+  <artifactId>zerotouch-rules</artifactId>
   <version>1.0.1</version>
 
   <properties>
@@ -15,6 +15,7 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <kogito.bom.version>1.43.0.Final</kogito.bom.version>
     <!-- <quarkus.platform.version>1.11.6.Final-redhat-00001</quarkus.platform.version>
     <quarkus-plugin.version>1.11.6.Final-redhat-00001</quarkus-plugin.version>
     <quarkus.platform.group-id>com.redhat.quarkus</quarkus.platform.group-id> -->
@@ -30,6 +31,13 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.kie.kogito</groupId>
+        <artifactId>kogito-bom</artifactId>
+        <version>${kogito.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>${quarkus.platform.artifact-id}</artifactId>
         <version>${quarkus.platform.version}</version>
@@ -40,6 +48,10 @@
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-quarkus-rules</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>

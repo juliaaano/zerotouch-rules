@@ -1,0 +1,20 @@
+package app.user;
+unit ZeroTouchRules;
+
+rule usernameAllowed
+when
+    $usr: /users[ name == "John" ]
+then
+    $usr.allow();
+end
+
+rule userAllowed
+when
+    $usr: /users[ running < 1 ]
+then
+    $usr.allow();
+end
+
+query isAllowed
+  $usr: /users
+end

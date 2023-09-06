@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: liquibase
   labels:
-    app: quarkus-app
+    app: zerotouch-rules
 spec:
   template:
     spec:
