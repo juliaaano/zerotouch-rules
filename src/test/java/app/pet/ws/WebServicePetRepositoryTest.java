@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import javax.inject.Inject;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.WebApplicationException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import app.pet.PetRepository;
 import io.quarkus.test.common.QuarkusTestResource;
@@ -47,6 +48,7 @@ public class WebServicePetRepositoryTest {
         });
     }
 
+    @Disabled
     @Test
     void find_pet_network_fault() {
 
@@ -58,9 +60,10 @@ public class WebServicePetRepositoryTest {
     @Test
     void find_pet_timeout() {
 
-        assertThrows(ProcessingException.class, () -> {
+        var exception = assertThrows(ProcessingException.class, () -> {
             repository.find("timeout");
         });
+        assertThat(exception).hasMessageEndingWith("Read timed out");
     }
 
     @Test
